@@ -66,11 +66,11 @@ describe Neighborhood do
     expect(brighton.neighborhood_openings('2014-05-01', '2014-05-05')).to include(listings[0])
   end
 
-  #it '.highest_ratio_reservations_to_listings' do
-  #  expect(Neighborhood.highest_ratio_reservations_to_listings).to eq(haight)
-  #end
+  it '.highest_ratio_reservations_to_listings' do
+    expect(Neighborhood.highest_ratio_reservations_to_listings).to eq(haight)
+  end
 
-  #it '.most_reservations' do
-  #  expect(Neighborhood.most_reservations).to eq(haight)
-  #end
+  it '.most_reservations' do
+    expect(Neighborhood.most_reservations).to eq(haight)
+  end
 end
