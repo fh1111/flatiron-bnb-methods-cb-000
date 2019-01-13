@@ -8,7 +8,7 @@ class Reservation < ActiveRecord::Base
   validate :available, :check_out_after_check_in, :guest_and_host_not_the_same
 
   def duration
-    (check_out - check_in).to_i
+    (checkout - checkin).to_i
   end
 
   def total_price
