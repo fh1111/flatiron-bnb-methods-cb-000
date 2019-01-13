@@ -14,6 +14,10 @@ class Listing < ActiveRecord::Base
   after_save :set_host_as_host
   before_destroy :unset_host_as_host
 
+  def average_review_rating
+    reviews.average(:rating)
+  end
+
 
   private
 
