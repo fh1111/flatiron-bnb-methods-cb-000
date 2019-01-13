@@ -4,7 +4,7 @@ class Neighborhood < ActiveRecord::Base
 
   has_many :reservations, through: :listings
 
-  incluse Reservable
+  include Reservable
 
   def neighborhood_openings(start_date, end_date)
     openings(start_date, end_date)
