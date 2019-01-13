@@ -55,40 +55,40 @@ describe City do
 
     let!(:reservations) do
       Reservation.create(
-        check_in: '2014-04-25',
-        check_out: '2014-04-30',
+        checkin: '2014-04-25',
+        checkout: '2014-04-30',
         listing: listings[0],
         guest: guest,
         status: 'accepted'
       )
 
       Reservation.create(
-        check_in: '2014-03-10',
-        check_out: '2014-03-25',
+        checkin: '2014-03-10',
+        checkout: '2014-03-25',
         listing: listings[1],
         guest: guest,
         status: 'accepted'
       )
 
       Reservation.create(
-        check_in: '2014-06-02',
-        check_out: '2014-06-30',
+        checkin: '2014-06-02',
+        checkout: '2014-06-30',
         listing: listings[2],
         guest: guest,
         status: 'accepted'
       )
 
       Reservation.create(
-        check_in: '2014-05-02',
-        check_out: '2014-05-08',
+        checkin: '2014-05-02',
+        checkout: '2014-05-08',
         listing: listings[0],
         guest: guest,
         status: 'accepted'
       )
 
       Reservation.create(
-        check_in: '2014-05-10',
-        check_out: '2014-05-15',
+        checkin: '2014-05-10',
+        checkout: '2014-05-15',
         listing: listings[0],
         guest: guest,
         status: 'accepted'
