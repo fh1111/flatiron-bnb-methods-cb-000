@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20140710181927) do
     t.string   "name"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
-    t.boolean  "host",       default: false
+    t.boolean  "is_host",       default: false
   end
 
 end
