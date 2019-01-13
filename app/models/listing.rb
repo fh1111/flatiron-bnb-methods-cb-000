@@ -5,7 +5,14 @@ class Listing < ActiveRecord::Base
   has_many :reviews, :through => :reservations
   has_many :guests, :class_name => "User", :through => :reservations
 
+  validates :address, presence: true
+  validates :description, presence: true
+  validates :listing_type, presence: true
+  validates :price, presence: true
+  validates :title, presence: true
 
+  after_save :set_host_as_host
+  before_destroy :unset_host_as_host
 
 
   private
@@ -20,4 +27,18 @@ class Listing < ActiveRecord::Base
       []
     end
   end
+
+  def unset_host_as_host
+    if Listing.where(host: host).where.not(id: id).empty?
+      host.update(is_host: false)
+    end
+  end
+
+  def set_host_as_host
+    unless host.is_host?
+      host.update(is_host: true)
+    end
+  end
+  end
+
 end
