@@ -4,7 +4,7 @@ class Reservation < ActiveRecord::Base
   has_one :review
 
 
-  validates :check_in, :check_out, presence: true
+  validates :checkin, :checkout, presence: true
   validate :available, :check_out_after_check_in, :guest_and_host_not_the_same
 
   def duration
@@ -20,8 +20,8 @@ class Reservation < ActiveRecord::Base
 
   def available
     Reservation.where(listing_id: listing.id).where.not(id: id).each do |r|
-      booked_dates = r.check_in..r.check_out
-      if booked_dates === check_in || booked_dates === check_out
+      booked_dates = r.checkin..r.checkout
+      if booked_dates === checkin || booked_dates === checkout
         errors.add(:guest_id, "Sorry, this place isn't available during your requested dates.")
       end
     end
@@ -34,7 +34,7 @@ class Reservation < ActiveRecord::Base
   end
 
   def check_out_after_check_in
-    if check_out && check_in && check_out <= check_in
+    if checkout && checkin && checkout <= check_n
       errors.add(:guest_id, "Your check-out date needs to be after your check-in.")
     end
   end
