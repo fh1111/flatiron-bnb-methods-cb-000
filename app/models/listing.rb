@@ -4,5 +4,20 @@ class Listing < ActiveRecord::Base
   has_many :reservations
   has_many :reviews, :through => :reservations
   has_many :guests, :class_name => "User", :through => :reservations
-  
+
+
+
+
+  private
+
+  def self.available(start_date, end_date)
+    if start_date && end_date
+      joins(:reservations).
+        where.not(reservations: {check_in: start_date..end_date}) &
+      joins(:reservations).
+        where.not(reservations: {check_out: start_date..end_date})
+    else
+      []
+    end
+  end
 end
