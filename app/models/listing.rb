@@ -38,11 +38,11 @@ class Listing < ActiveRecord::Base
     end
   end
 
-  #def set_host_as_host
-  #  unless host.is_host?
-  #    host.update(is_host: true)
-  #  end
-  #end
+  def set_host_as_host
+    unless host.is_host?
+      host.update(is_host: true)
+    end
+  end
 
 
 end
