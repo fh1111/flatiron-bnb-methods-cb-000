@@ -63,7 +63,7 @@ describe Reservation do
   end
 
   it 'is invalid without a checkin' do
-    
+
     expect(
       Reservation.new(
       checkout: '2014-01-30',
@@ -115,7 +115,7 @@ describe Reservation do
 
   describe "conflicts" do
     before(:each) do
-      
+
       Reservation.create!(
         checkin: '2014-04-25',
         checkout: '2014-04-30',
