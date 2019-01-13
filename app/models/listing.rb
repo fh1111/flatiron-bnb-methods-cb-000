@@ -1,6 +1,7 @@
 class Listing < ActiveRecord::Base
-  belongs_to :neighborhood
+  belongs_to :neighborhood, required: true
   belongs_to :host, :class_name => "User"
+
   has_many :reservations
   has_many :reviews, :through => :reservations
   has_many :guests, :class_name => "User", :through => :reservations
@@ -18,7 +19,6 @@ class Listing < ActiveRecord::Base
     reviews.average(:rating)
   end
 
-
   private
 
   def self.available(start_date, end_date)
@@ -32,7 +32,13 @@ class Listing < ActiveRecord::Base
     end
   end
 
+
+  # it feels to me like part of what makes this complicated is
+  # that we have column in the database called is_host, 
+  # but instead this could just be a method, and then rely on that..
+  # not sure if it's worth the effort though.
   def unset_host_as_host
+    # remove .id
     if Listing.where(host: host).where.not(id: id).empty?
       host.update(host: false)
     end
@@ -43,6 +49,4 @@ class Listing < ActiveRecord::Base
       host.update(host: true)
     end
   end
-
-
 end
