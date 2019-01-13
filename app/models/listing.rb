@@ -34,7 +34,7 @@ class Listing < ActiveRecord::Base
 
 
   # it feels to me like part of what makes this complicated is
-  # that we have column in the database called is_host, 
+  # that we have column in the database called is_host,
   # but instead this could just be a method, and then rely on that..
   # not sure if it's worth the effort though.
   def unset_host_as_host
